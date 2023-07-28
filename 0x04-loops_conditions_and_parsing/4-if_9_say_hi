@@ -3,11 +3,10 @@
 limit=10
 while [ $limit -gt 0 ]
 do
-	((limit--))
 	echo "Best School"
 	if [ "$limit" -eq 2 ]
 	then
-		((limit--))
 		echo "Hi"
 	fi
+  ((limit--))
 done
