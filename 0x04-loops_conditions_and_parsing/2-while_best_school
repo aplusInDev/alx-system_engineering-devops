@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Bash script that displays Best School 10 times using while loop
+limit=10
+while [ $limit -gt 0 ]
+do
+	echo "Best School"
+	((limit--))
+done

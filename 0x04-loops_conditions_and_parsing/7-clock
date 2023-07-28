@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# displays 17 and then bad luck from Italy for the 17th loop iteration:
+#+ display hours from 0 to 12
+#+ display minutes from 1 to 59
+##-------------------------------##
+#initialise hour counter
+hour=0
+while [ $hour -le 12 ]
+do
+	#initialise minutes counter
+	min=1
+	echo "Hour: $hour"
+	while [ $min -le 59 ]
+	do
+		echo "$min"
+		((min++))
+	done
+	((hour++))
+done
