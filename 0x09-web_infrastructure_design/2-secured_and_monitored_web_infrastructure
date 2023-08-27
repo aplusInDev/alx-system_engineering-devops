@@ -1,2 +1,33 @@
-https://imgur.com/a/6rxeThg
+https://imgur.com/a/sw9L5I1
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2.	 Secured and monitored web infrastructure :
+
+-For Every Additional Element, Why You Are Adding It:
+•	Firewalls: Three firewalls are added for ultimate security. The first firewall examines incoming requests and can deny subsequent ones based on rules. The second firewall within the server prevents hacking attempts based on request analysis. The third firewall, acting as a circuit-level firewall, inspects information transactions.
+
+•	SSL Certificate: An SSL certificate is added to secure HTTPS protocols and encrypt communication, ensuring data privacy and integrity during transmission.
+
+
+•	Monitoring Clients: Three monitoring clients are included to gather performance metrics from each master-server and the load balancer. This data helps improve user experience and make informed decisions for scaling.
+
+-What Are Firewalls For: Firewalls are network security devices that monitor traffic between private and public networks. They establish a barrier between the two, filtering network traffic based on predefined security rules. Firewalls provide protection against unauthorized access, threats, and attacks.
+
+-Why Is the Traffic Served Over HTTPS: Traffic is served over HTTPS (HyperText Transfer Protocol Secure) to ensure security. By using the secure port 443 and encrypting outgoing information, HTTPS prevents unauthorized access and data interception, enhancing the confidentiality of user data.
+
+-What Monitoring Is Used For: Monitoring is used for quality control, maintaining standards, and continuous improvement. It involves checking new data against predefined rules and metrics. Detected anomalies trigger alerts to address violations and ensure data consistency and performance.
+
+-How the Monitoring Tool Is Collecting Data: IT monitoring consists of three components: foundation, software, and interpretation. The foundation includes physical and virtual devices like servers. The software analyzes device metrics, such as CPU usage and memory. The interpretation phase turns collected data into metrics presented through graphs or dashboards for better understanding and data analytics.
+
+-Explain What to Do If You Want to Monitor Your Web Server QPS: To monitor your web server's Queries Per Second (QPS), you need to track the rate of incoming traffic. Utilize monitoring tools or software that captures the number of queries being processed by the server within a specific time frame. Analyzing this metric helps assess server load and resource requirements, aiding in scaling decisions to prevent server overload.
+-Identifying Issues with the Secured and Monitored Infrastructure:
+•	Terminating SSL at Load Balancer Level: Terminating SSL at the load balancer level can expose decrypted data to potential threats before reaching the application server. It's safer to terminate SSL at the application server level to maintain data security.
+
+•	Single MySQL Server Capable of Accepting Writes: Relying on a single MySQL server for write operations introduces a single point of failure. If the server fails, write operations halt. Implementing MySQL replication with a Primary-Replica configuration can address this issue.
+
+
+•	Uniform Servers with Same Components: Using servers with identical components leads to a single point of failure. If a shared component (e.g., database) experiences issues, all servers are impacted. Diversifying server components can enhance fault tolerance and system resilience.
+By addressing these issues through proper SSL termination, MySQL replication, component diversity, and efficient monitoring strategies, the secured and monitored web infrastructure can become more reliable and resilient.
+ 
 

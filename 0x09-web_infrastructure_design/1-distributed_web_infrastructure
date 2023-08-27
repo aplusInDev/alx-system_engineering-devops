@@ -1,0 +1,23 @@
+https://imgur.com/a/qo2v6tX
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
+1.	Distributed web infrastructure
+
+•	For Every Additional Element, Why You Are Adding It: In this distributed web infrastructure, we are adding multiple components to enhance reliability, scalability, and performance. The addition of two master-servers and a slave-server is aimed at achieving an Active-Active setup for load balancing and high availability. The load balancer is introduced to distribute incoming traffic efficiently using a Round Robin algorithm. The database Primary-Replica (Master-Slave) cluster is implemented to ensure data consistency, sharing, and quick access. These additions collectively improve overall system reliability and user experience.
+
+•	Distribution Algorithm of Load Balancer (HAproxy) and How It Works: The load balancer (HAproxy) employs a Round Robin algorithm for distribution. With Round Robin, incoming requests are sequentially sent to each server in a circular order. Once all servers have received requests, the algorithm starts from the first server again. This approach helps balance the server load evenly and ensures an approximate 50% distribution of traffic across the two identical servers.
+
+•	Active-Active Setup vs. Active-Passive Setup: Our load balancer is configured with an Active-Active setup. In Active-Active, both master-servers are actively serving requests simultaneously, distributing tasks to balance the load. This setup provides improved service time and throughput as there are multiple servers available to handle incoming requests.
+
+
+•	How a Database Primary-Replica (Master-Slave) Cluster Works: A Primary-Replica cluster involves data replication from a primary database (master) to one or more replica databases (slaves). This mechanism ensures data consistency and accessibility among users. Replication can be synchronous (data is copied to replicas before confirmation) or asynchronous (confirmation follows copying). Synchronous replication offers data verification but might be slower, while asynchronous replication allows replicas to copy data at their own pace.
+
+•	Difference Between Primary Node and Replica Node Regarding the Application: The primary node serves as the authoritative source of data and handles write operations. It holds the "real" data and is responsible for maintaining data integrity. Reading operations, on the other hand, occur in the replica or slave node. The replica database synchronizes with the primary to provide read-only access, alleviating the primary node's load and preventing overload during high traffic.
+-Explaining the Issues with the Distributed Infrastructure:
+•	Single Point of Failure (SPOF): While we've introduced redundancy in the application and web servers, the load balancer and database server still remain potential single points of failure. If any of these critical components fail, the entire system could become inaccessible.
+•	Security Issues (No Firewall, No HTTPS): The infrastructure lacks essential security measures. Without a firewall, the system is exposed to unauthorized access and cyber threats. The absence of HTTPS encryption leaves data transmission vulnerable to interception and breaches.
+•	No Monitoring: The infrastructure lacks proper monitoring tools and strategies. Without monitoring, it becomes difficult to identify performance bottlenecks, security breaches, or system failures in real-time, leading to potential issues going unnoticed and unresolved.
+By addressing these issues through the implementation of security measures, monitoring tools, and redundancy strategies, the distributed web infrastructure can become more robust, secure, and reliable
+
