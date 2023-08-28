@@ -1,0 +1,4 @@
+https://imgur.com/a/fOHljab
+-------------------------------------------------------------------------------
+Explanation:
+In this infrastructure we used three servers, split components (web server application server, database) with their own server, and two load balance (HAproxy) which configured as cluster.

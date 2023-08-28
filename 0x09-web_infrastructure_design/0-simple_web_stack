@@ -1,0 +1,33 @@
+https://imgur.com/a/4V51m59
+
+----------------------------------------------------------------------------------------------
+Explanation:
+This infrastructure called "simple web stack" and contains the next specifics:
+1- Domain name: generally the domaine name role is to provide a human-friendly way to
+identify and access internet resources.
+domain names are managed by the Domain Name System (DNS).
+in our case the domain name is "foobar.com" and is an A recorde, because the IP address
+associated with this domain name is 8.8.8.8 (IPv4).
+2- DNS: (Domain Name System) it is a service that translate domain names into IP address.
+3- server: is a piece of computer hardware or software, located in data center which are
+buildings that host hundreds, or even thousands of servers.
+A server can be physical or virtual. and runs on operating system (OS).
+Communication between servers is via TCP/IP protocol
+4- web server: is a software that delivers web pages (static web pages), it can be actual
+computer (in the cloud area it can be virtual computer, called virtual machine).
+A resource sent from a web server can be a pre-existing file (static content) available to the
+web server, or it can be generated at the time of the request (dynamic content) by another
+program that communicates with the server software. 
+5- application server: is a type of server that hosts and runs software applications that
+provide business logic or functionality for web clients or other devices. An application server
+can communicate with web servers, database servers, and other services to process and deliver
+dynamic content, such as web pages, emails, online games, etc. An application server can also
+provide security, scalability, performance, and reliability features for the applications it
+hosts.
+6- database: generally it is an organized collection of structured information, it used to store
+and manage application data, in our case we use MYSQL databse.
+This infrastructure has many issues including:
+1- SPOF: (single point of failure) because if one component in this structure has broken, the
+application will fails.
+2- Downtime: when maintenance needed (like deploying new code web server needs to be restarted)
+3- Cannot scale if too much incoming traffic
