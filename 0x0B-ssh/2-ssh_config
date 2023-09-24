@@ -2,7 +2,7 @@
 
 # SSH configuration file
 Host aplus_sever
-    HostName 3.86.7.178
+    HostName 34.204.81.175
     User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
