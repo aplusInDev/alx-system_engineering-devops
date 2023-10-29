@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module is to gather data from an API 
+"""This module is to gather data from an API
 export json format
 { "USER_ID": [{"task": "TASK_TITLE",
 "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"},
@@ -100,4 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
