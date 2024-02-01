@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script displays the content of the file /etc/passwd, but only shows the username, user id, and home directory path for each user
+# The file /etc/passwd contains information about the users on the system
+# Each line has seven fields separated by colons
+# The fields are: username, password, user ID, group ID, user info, home directory, and login shell
+
+# Check if the file exists and is readable
+if [ -f /etc/passwd ] && [ -r /etc/passwd ]; then
+  # Use a while loop to read each line of the file
+  while read -r line; do
+    # Display the username, user id, and home directory path for each user
+    cut -d: -f1,3,6 <<< "$line"
+  done < /etc/passwd
+else
+  # Display an error message
+  echo "The file /etc/passwd does not exist or is not readable"
+fi
