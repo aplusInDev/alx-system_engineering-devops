@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script parses an Apache log file and displays the 11 hosts or IP addresses
+
+awk '{print $1}' apache-access.log
