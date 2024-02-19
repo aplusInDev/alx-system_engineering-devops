@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
-
-# SSH configuration file
-Host aplus_sever
-    HostName 54.146.86.128
+Host web-01
+    HostName 100.25.20.254
     User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
