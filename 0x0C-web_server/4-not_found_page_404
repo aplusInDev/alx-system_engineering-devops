@@ -8,7 +8,7 @@ sudo apt update
 sudo apt install nginx -y
 
 sudo mkdir -p /var/www/aplusdev.tech/html
-sudo chown -R $USER:$USER /var/www/aplusdev.tech/html
+sudo chown -R "$USER":"$USER" /var/www/aplusdev.tech/html
 sudo chmod -R 755 /var/www/aplusdev.tech
 echo "Hello World!" > /var/www/aplusdev.tech/html/index.html
 
