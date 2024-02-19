@@ -1,9 +1,9 @@
 # Set up server configuration with puppet
 
 file_line{'Set alias name':
-  path => '/etc/ssh/ssh_config',
-  line => 'aplus_server
-    HostName 54.146.86.128
+  path => '/etc/ssh/ssh_config_v2',
+  line => 'web-01
+    HostName 100.25.20.254
     User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no',
