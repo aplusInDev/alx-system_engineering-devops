@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# setting up new server with Nginx
 
 # Install Nginx
 sudo apt update
