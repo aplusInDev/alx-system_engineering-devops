@@ -9,9 +9,6 @@ apt-get install -y haproxy=2.9.\*
 # Configure HAProxy
 echo "ENABLED=1" >> /etc/default/haproxy
 
-# Create a backup of the original configuration file
-cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
-
 # Create a new configuration file
 echo "frontend aplusdev.tech
     bind *:80
