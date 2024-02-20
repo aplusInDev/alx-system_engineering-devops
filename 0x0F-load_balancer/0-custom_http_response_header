@@ -1,22 +1,54 @@
-#!/usr/bin/env bash
-# Configure your Nginx server to have a custom 404 page
+#!/usr/bin/bash
 
-oldstr="server_name _;"
-newstr="server_name _;\n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+# Install Nginx
+sudo apt update
+sudo apt install nginx -y
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-sudo sed -i -e "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/default
+sudo mkdir -p /var/www/aplusdev.tech/html
+sudo chown -R "$USER":"$USER" /var/www/aplusdev.tech/html
+sudo chmod -R 755 /var/www/aplusdev.tech
+echo "Hello World!" > /var/www/aplusdev.tech/html/index.html
 
+sudo echo "server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/aplusdev.tech/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name aplusdev.tech www.aplusdev.tech;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}" > /etc/nginx/sites-available/aplusdev.tech
+
+sudo ln -s /etc/nginx/sites-available/aplusdev.tech /etc/nginx/sites-enabled/
+sudo rm /etc/nginx/sites-enabled/default
+sudo sed -i 's/# server_names_hash_bucket_size 64;/server_names_hash_bucket_size 64;/' /etc/nginx/nginx.conf
+
+# redirect to "301 moved permanently"
+old_str="server_name aplusdev.tech www.aplusdev.tech;"
+new_str="$old_str\n\n    location /redirect_me {\n\treturn 301  https://www.youtube.com/watch?v=QH2-TGUlwu4;\n    }"
+sudo sed -i -e "s|$old_str|$new_str|" /etc/nginx/sites-enabled/aplusdev.tech
+
+
+# redirect to "404 not found"
 oldstr="=404;"
-newstr="@oui_oui_baguette;\n\t}\n\n\tlocation @oui_oui_baguette {\n\t\tdefault_type text/html;\n\t\treturn 404 \"Ceci n\'est pas une page\";"
+newstr="@oui_oui_baguette;\n    }\n\n    location @oui_oui_baguette {\n\tdefault_type text/html;\n\treturn 404 \"Ceci n\'est pas une page\";"
 
-sudo sed -i -z "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/default
+sudo sed -i -z "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/aplusdev.tech
 
+# add http header
 oldstr="location / {"
-newstr="location / {\n\t\tadd_header X-Served-By \"$(hostname)\";"
+newstr="$oldstr\n\tadd_header X-Served-By $(hostname);"
 
-sudo sed -i -z "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/default
+sudo sed -i -z "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/aplusdev.tech
 
+
+sudo sed -i -z "s|# server_names_hash_bucket_size 64;|server_names_hash_bucket_size 64;|" /etc/nginx/nginx.conf
+
+
+# Test and restart Nginx
+sudo nginx -t
 sudo service nginx restart
