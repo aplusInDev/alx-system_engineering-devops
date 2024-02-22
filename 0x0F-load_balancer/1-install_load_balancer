@@ -23,5 +23,5 @@ sudo sh -c 'echo "backend aplus_servers
     server web-02 54.144.154.99:80 check" >> /etc/haproxy/haproxy.cfg'
 
 # Test and restart HAProxy
-sudo haproxy -f /etc/haproxy/haproxy.cfg -c
+# sudo haproxy -f /etc/haproxy/haproxy.cfg -c
 sudo service haproxy restart
