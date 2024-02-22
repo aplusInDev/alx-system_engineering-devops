@@ -1,27 +1,6 @@
 #!/usr/bin/env bash
-# Install HAProxy (use sudo if not running as root)
-
+# Install and configure HAproxy on your lb-01 server.
 sudo apt update
-sudo apt-get install -y --no-install-recommends software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy-2.9
-sudo apt-get install -y haproxy=2.9.\*
-
-# Configure HAProxy
-sudo sh -c 'echo "ENABLED=1" >> /etc/default/haproxy'
-
-# Create a backup of the original configuration file
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
-
-# Create a new configuration file
-sudo sh -c 'echo "frontend aplusdev.tech
-    bind *:80
-    use_backend aplus_servers" >> /etc/haproxy/haproxy.cfg'
-
-sudo sh -c 'echo "backend aplus_servers
-    balance roundrobin
-    server web-01 100.25.20.254:80 check
-    server web-02 54.144.154.99:80 check" >> /etc/haproxy/haproxy.cfg'
-
-# Test and restart HAProxy
-# sudo haproxy -f /etc/haproxy/haproxy.cfg -c
+sudo apt install haproxy -y
+sudo sh -c 'echo "\nlisten myserver\n\tbind *:80\n\tbalance roundrobin\n\tserver server1 100.25.20.254:80 check\n\tserver server2 54.144.154.99 check\n" >> /etc/haproxy/haproxy.cfg'
 sudo service haproxy restart
