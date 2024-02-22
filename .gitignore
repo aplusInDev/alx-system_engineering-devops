@@ -1,2 +1,4 @@
 apache-access.log
+__pycache__
+fabfile.py
 0x1A-application_server/
